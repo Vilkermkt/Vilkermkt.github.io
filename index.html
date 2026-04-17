@@ -332,6 +332,14 @@
       50%       { transform: translateY(calc(-50% - 6px)); }
     }
 
+  
+    /* ── Project Cover Image ── */
+    .project-cover {
+      width: 100%; height: 180px;
+      background-size: cover; background-position: center;
+      border-radius: 20px 20px 0 0;
+    }
+
   </style>
 </head>
 <body>
@@ -486,10 +494,10 @@
 
     // Projects data
     const projects = [
-      { emoji: "🪐", title: "AstroPlan", desc: "Assistente pessoal com IA — tarefas, planejamento e automações num só lugar.", tags: ["IA", "Automação", "Produtividade"], link: "https://assistentastroplan.base44.app", bar: "linear-gradient(90deg,#00FF87,#4F46E5)" },
-      { emoji: "🏥", title: "ClinicOne", desc: "Plataforma SaaS para gestão de clínicas. Agendamento, prontuários e controle financeiro.", tags: ["SaaS", "Saúde", "Dev"], link: "https://clinione.base44.app", bar: "linear-gradient(90deg,#00E5CC,#2563EB)" },
-      { emoji: "🌿", title: "EcoCity", desc: "Tecnologia aplicada à sustentabilidade urbana. Impacto real nas cidades.", tags: ["Dev", "Impacto Social", "Web"], link: "https://ecocity.base44.app", bar: "linear-gradient(90deg,#10B981,#0D9488)" },
-      { emoji: "⚽", title: "Em Jogo SP", desc: "Portal esportivo dedicado ao universo do esporte em São Paulo.", tags: ["Marketing", "Conteúdo", "Web"], link: "https://emjogosp.com", bar: "linear-gradient(90deg,#F97316,#DC2626)" }
+      { emoji: "🪐", title: "AstroPlan", desc: "Assistente pessoal com IA — tarefas, planejamento e automações num só lugar.", tags: ["IA", "Automação", "Produtividade"], link: "https://assistentastroplan.base44.app", bar: "linear-gradient(90deg,#00FF87,#4F46E5)", cover: "https://media.base44.com/images/public/69e2902a7a927963a992ce38/a2e6040bf_Capturadetela2026-04-17115816.png" },
+      { emoji: "🏥", title: "ClinicOne", desc: "Plataforma SaaS para gestão de clínicas. Agendamento, prontuários e controle financeiro.", tags: ["SaaS", "Saúde", "Dev"], link: "https://clinione.base44.app", bar: "linear-gradient(90deg,#00E5CC,#2563EB)", cover: "https://media.base44.com/images/public/69e2902a7a927963a992ce38/63a3b5801_image.png" },
+      { emoji: "🌿", title: "EcoCity", desc: "Tecnologia aplicada à sustentabilidade urbana. Impacto real nas cidades.", tags: ["Dev", "Impacto Social", "Web"], link: "https://ecocity.base44.app", bar: "linear-gradient(90deg,#10B981,#0D9488)", cover: "https://media.base44.com/images/public/69e2902a7a927963a992ce38/e693f77f6_image.png" },
+      { emoji: "⚽", title: "Em Jogo SP", desc: "Portal esportivo dedicado ao universo do esporte em São Paulo.", tags: ["Marketing", "Conteúdo", "Web"], link: "https://emjogosp.com", bar: "linear-gradient(90deg,#F97316,#DC2626)", cover: "https://media.base44.com/images/public/69e2902a7a927963a992ce38/c8b6b99cb_emjogosSp.png" }
     ];
 
     function renderProjects(filter) {
@@ -497,7 +505,7 @@
       const filtered = filter === "Todos" ? projects : projects.filter(p => p.tags.some(t => t.includes(filter)));
       grid.innerHTML = filtered.map(p => `
         <div class="project-card">
-          <div class="project-bar" style="background:${p.bar}"></div>
+          ${p.cover ? `<div class="project-cover" style="background-image:url('${p.cover}')"></div>` : `<div class="project-bar" style="background:${p.bar}"></div>`}
           <div class="project-body">
             <div class="project-emoji">${p.logo ? '<img src="' + p.logo + '" alt="' + p.title + '" style="width:56px;height:56px;object-fit:contain;border-radius:10px;">' : p.emoji}</div>
             <div class="project-title">${p.title}</div>
