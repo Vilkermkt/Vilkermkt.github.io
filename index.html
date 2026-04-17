@@ -54,6 +54,34 @@
     }
     .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(124,58,237,0.5); }
 
+    /* ── Hero Stats ── */
+    .hero-stats { display: flex; gap: 2rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
+    .hstat { display: flex; flex-direction: column; }
+    .hstat-val { font-size: 1.8rem; font-weight: 900; color: var(--cyan); line-height: 1; }
+    .hstat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── Tech Tags ── */
+    .tech-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.4rem; }
+    .tech-tag {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px; padding: 0.3rem 0.9rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--muted);
+      transition: all 0.2s;
+    }
+    .tech-tag:hover { border-color: var(--purple); color: #A78BFA; }
+
+    /* ── Float Badges ── */
+    .float-badge {
+      position: absolute; z-index: 3;
+      background: rgba(20,20,30,0.9); border: 1px solid rgba(124,58,237,0.4);
+      backdrop-filter: blur(10px); border-radius: 999px;
+      padding: 0.4rem 1rem; font-size: 0.78rem; font-weight: 700;
+      color: #fff; white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    }
+    .float-badge-top { top: 20px; right: -20px; }
+    .float-badge-bot { bottom: 40px; right: -30px; background: rgba(20,30,20,0.9); border-color: rgba(34,197,94,0.4); box-shadow: 0 4px 20px rgba(34,197,94,0.2); }
+
     /* ── Hero ── */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
@@ -271,6 +299,8 @@
         <div class="photo-ring"></div>
         <img src="https://media.base44.com/images/public/69e2902a7a927963a992ce38/143894afe_WhatsAppImage2025-01-28at165309.jpeg" alt="Vilker Ferreira"/>
         <div class="photo-badge">🤖</div>
+        <div class="float-badge float-badge-top">🤖 Apps com IA</div>
+        <div class="float-badge float-badge-bot">✅ Entrega rápida</div>
       </div>
       <div class="hero-text fade-up-delay">
         <div class="badge-available">
@@ -279,10 +309,22 @@
         </div>
         <h1>Olá, eu sou<br/><span class="gradient">Vilker Ferreira</span></h1>
         <p class="typed-line"><span id="typed"></span><span class="cursor">|</span></p>
-        <p class="hero-desc">Transformo ideias em produtos reais usando tecnologia, marketing e inteligência artificial. Não espero o futuro chegar — eu o construo, linha por linha.</p>
+        <p class="hero-desc">Criador de <strong style="color:#fff;">Landing Pages</strong> e <strong style="color:#fff;">Aplicativos PWA</strong> que convertem e encantam.</p>
+        <div class="hero-stats">
+          <div class="hstat"><span class="hstat-val">15+</span><span class="hstat-label">Projetos entregues</span></div>
+          <div class="hstat"><span class="hstat-val">4</span><span class="hstat-label">Domínios próprios</span></div>
+          <div class="hstat"><span class="hstat-val" style="color:var(--purple);">100%</span><span class="hstat-label">NoCode & IA</span></div>
+        </div>
         <div class="hero-btns">
           <a href="#projetos" class="btn-primary">🚀 Ver Projetos</a>
-          <a href="#contato" class="btn-outline">💬 Falar Comigo</a>
+          <a href="#contato" class="btn-outline">💬 Fale Comigo</a>
+        </div>
+        <div class="tech-tags">
+          <span class="tech-tag">⚡ Base44</span>
+          <span class="tech-tag">📱 PWA</span>
+          <span class="tech-tag">🤖 IA</span>
+          <span class="tech-tag">🚀 Landing Pages</span>
+          <span class="tech-tag">🎨 UI/UX</span>
         </div>
       </div>
     </div>
