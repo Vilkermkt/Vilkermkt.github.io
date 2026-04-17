@@ -85,16 +85,34 @@
     .tech-tag:hover { border-color: var(--purple); color: #A78BFA; }
 
     /* ── Float Badges ── */
-    .float-badge {
-      position: absolute; z-index: 3;
-      background: rgba(20,20,30,0.9); border: 1px solid rgba(124,58,237,0.4);
-      backdrop-filter: blur(10px); border-radius: 999px;
-      padding: 0.4rem 1rem; font-size: 0.78rem; font-weight: 700;
-      color: #fff; white-space: nowrap;
-      box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+    .photo-container {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: 360px; height: 360px; flex-shrink: 0;
     }
-    .float-badge-top { top: 20px; right: -20px; }
-    .float-badge-bot { bottom: 40px; right: -30px; background: rgba(20,30,20,0.9); border-color: rgba(34,197,94,0.4); box-shadow: 0 4px 20px rgba(34,197,94,0.2); }
+    .fb {
+      position: absolute; z-index: 5;
+      background: rgba(15,15,25,0.92); border: 1px solid rgba(124,58,237,0.35);
+      backdrop-filter: blur(12px); border-radius: 999px;
+      padding: 0.38rem 1rem; font-size: 0.75rem; font-weight: 700;
+      color: #fff; white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(124,58,237,0.25);
+      animation: floatBob 3s ease-in-out infinite;
+    }
+    .fb-1 { top: 10px;  left: -10px;  animation-delay: 0s; }
+    .fb-2 { top: 55px;  right: -25px; animation-delay: 0.5s; }
+    .fb-3 { top: 50%;   left: -30px;  transform: translateY(-50%); animation-delay: 1s; }
+    .fb-4 { bottom: 55px; left: -15px; animation-delay: 1.5s; }
+    .fb-5 { bottom: 10px; right: -10px; animation-delay: 2s; }
+    .fb-6 { bottom: 80px; right: -35px; border-color: rgba(34,197,94,0.4); box-shadow: 0 4px 18px rgba(34,197,94,0.2); animation-delay: 2.5s; }
+    @keyframes floatBob {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+    .fb-3 { animation: floatBob3 3s ease-in-out infinite; animation-delay: 1s; }
+    @keyframes floatBob3 {
+      0%, 100% { transform: translateY(-50%); }
+      50%       { transform: translateY(calc(-50% - 6px)); }
+    }
 
     /* ── Hero ── */
     .hero {
@@ -309,12 +327,17 @@
     <div class="glow-1"></div>
     <div class="glow-2"></div>
     <div class="hero-inner">
-      <div class="photo-wrap fade-up">
-        <div class="photo-ring"></div>
-        <img src="https://media.base44.com/images/public/69e2902a7a927963a992ce38/143894afe_WhatsAppImage2025-01-28at165309.jpeg" alt="Vilker Ferreira"/>
-        <div class="photo-badge">🤖</div>
-        <div class="float-badge float-badge-top">🤖 Apps com IA</div>
-        <div class="float-badge float-badge-bot">✅ Entrega rápida</div>
+      <div class="photo-container fade-up">
+        <div class="photo-wrap">
+          <div class="photo-ring"></div>
+          <img src="https://media.base44.com/images/public/69e2902a7a927963a992ce38/143894afe_WhatsAppImage2025-01-28at165309.jpeg" alt="Vilker Ferreira"/>
+        </div>
+        <div class="fb fb-1">⚡ Base44</div>
+        <div class="fb fb-2">📱 PWA</div>
+        <div class="fb fb-3">🤖 IA</div>
+        <div class="fb fb-4">🚀 Landing Pages</div>
+        <div class="fb fb-5">🎨 UI/UX</div>
+        <div class="fb fb-6">✅ Entrega rápida</div>
       </div>
       <div class="photo-tags">
         <span class="photo-tag">⚡ Base44</span>
