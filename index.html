@@ -306,6 +306,37 @@
       .photo-wrap { width: 200px; height: 200px; }
       .photo-wrap img { width: 200px; height: 200px; }
     }
+  
+    /* ── Balões flutuantes foto ── */
+    .fb {
+      position: absolute; z-index: 5;
+      background: rgba(15,15,25,0.92); border: 1px solid rgba(0,255,135,0.35);
+      backdrop-filter: blur(12px); border-radius: 999px;
+      padding: 0.38rem 1rem; font-size: 0.72rem; font-weight: 700;
+      color: #fff; white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(0,255,135,0.2);
+      animation: floatBob 3s ease-in-out infinite;
+    }
+    .fb-1 { top: -10px;    left: -30px;   animation-delay: 0s; }
+    .fb-2 { top: 20px;     right: -50px;  animation-delay: 0.4s; }
+    .fb-3 { top: 50%;      left: -55px;   transform: translateY(-50%); animation-delay: 0.8s; }
+    .fb-4 { bottom: 20px;  left: -20px;   animation-delay: 1.2s; }
+    .fb-5 { bottom: -10px; right: -40px;  animation-delay: 1.6s; }
+    .fb-6 { top: 45%;      right: -40px;  transform: translateY(-50%); animation-delay: 2s; }
+    .fb-7 { top: 75%;      left: -40px;   animation-delay: 2.4s; }
+    .fb-8 { top: 5px;      right: -20px;  animation-delay: 2.8s; }
+    @keyframes floatBob {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+    .fb-3, .fb-6 {
+      animation: floatBobCenter 3s ease-in-out infinite;
+    }
+    @keyframes floatBobCenter {
+      0%, 100% { transform: translateY(-50%); }
+      50%       { transform: translateY(calc(-50% - 6px)); }
+    }
+
   </style>
 </head>
 <body>
@@ -331,6 +362,14 @@
         <div class="photo-wrap">
           <div class="photo-ring"></div>
           <img src="https://media.base44.com/images/public/69e2902a7a927963a992ce38/143894afe_WhatsAppImage2025-01-28at165309.jpeg" alt="Vilker Ferreira"/>
+          <div class="fb fb-1">🎨 UI/UX Design</div>
+          <div class="fb fb-2">⚡ PWA</div>
+          <div class="fb fb-3">📱 Mobile First</div>
+          <div class="fb fb-4">🚀 Landing Pages</div>
+          <div class="fb fb-5">✏️ NoCode Tools</div>
+          <div class="fb fb-6">🤖 IA</div>
+          <div class="fb fb-7">🌐 Web Apps</div>
+          <div class="fb fb-8">📦 SaaS</div>
         </div>
 
       </div>
@@ -352,13 +391,7 @@
           <a href="#projetos" class="btn-primary">🚀 Ver Projetos</a>
           <a href="#contato" class="btn-outline">💬 Fale Comigo</a>
         </div>
-        <div class="tech-tags">
-          <span class="tech-tag">⚡ Base44</span>
-          <span class="tech-tag">📱 PWA</span>
-          <span class="tech-tag">🤖 IA</span>
-          <span class="tech-tag">🚀 Landing Pages</span>
-          <span class="tech-tag">🎨 UI/UX</span>
-        </div>
+        
       </div>
     </div>
   </section>
