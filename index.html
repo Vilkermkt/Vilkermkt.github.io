@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vilker Ferreira | Dev · Marketing · IA</title>
+  <meta name="description" content="Portfólio de Vilker Ferreira — Tecnologia, Marketing Digital, IA e Automações."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0D0D0D;
+      --purple: #7C3AED;
+      --cyan: #06B6D4;
+      --text: #F8FAFC;
+      --muted: #64748B;
+      --card: rgba(255,255,255,0.03);
+      --border: rgba(124,58,237,0.2);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--purple); border-radius: 3px; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,13,13,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(124,58,237,0.15);
+      padding: 0 2rem; display: flex; align-items: center;
+      justify-content: space-between; height: 64px;
+    }
+    .logo {
+      font-weight: 900; font-size: 1.3rem;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--purple); }
+    .nav-cta {
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      color: #fff; padding: 0.5rem 1.2rem; border-radius: 999px;
+      text-decoration: none; font-size: 0.85rem; font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(124,58,237,0.5); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; padding: 7rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .glow-1 {
+      position: absolute; top: 20%; left: 10%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
+      pointer-events: none; animation: float 6s ease-in-out infinite;
+    }
+    .glow-2 {
+      position: absolute; bottom: 20%; right: 10%;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%);
+      pointer-events: none; animation: float 8s ease-in-out infinite reverse;
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%; display: flex;
+      align-items: center; gap: 4rem; flex-wrap: wrap; justify-content: center;
+    }
+    .photo-wrap { position: relative; width: 260px; height: 260px; flex-shrink: 0; }
+    .photo-ring {
+      position: absolute; inset: -4px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--cyan), var(--purple));
+      animation: spin 4s linear infinite;
+    }
+    .photo-wrap img {
+      width: 260px; height: 260px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      position: relative; z-index: 1; border: 4px solid var(--bg);
+    }
+    .photo-badge {
+      position: absolute; bottom: 12px; right: 12px; z-index: 2;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      border-radius: 50%; width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+      box-shadow: 0 0 20px rgba(124,58,237,0.6);
+    }
+    .hero-text { max-width: 560px; }
+    .badge-available {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 999px; padding: 0.3rem 1rem; margin-bottom: 1.2rem;
+    }
+    .badge-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #22C55E; box-shadow: 0 0 8px #22C55E;
+      animation: pulse 2s infinite;
+    }
+    .badge-available span:last-child { font-size: 0.8rem; color: #A78BFA; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+    h1 .gradient { background: linear-gradient(90deg, var(--purple), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .typed-line { font-size: 1.1rem; color: var(--cyan); font-weight: 600; margin-bottom: 1.2rem; min-height: 1.6rem; }
+    .cursor { animation: blink 1s infinite; }
+    .hero-desc { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      color: #fff; padding: 0.75rem 2rem; border-radius: 999px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      box-shadow: 0 0 30px rgba(124,58,237,0.4); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(124,58,237,0.6); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      padding: 0.75rem 2rem; border-radius: 999px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem; border: 1px solid rgba(248,250,252,0.2);
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--purple); }
+
+    /* ── Stats ── */
+    .stats {
+      padding: 2rem; background: rgba(124,58,237,0.05);
+      border-top: 1px solid rgba(124,58,237,0.1);
+      border-bottom: 1px solid rgba(124,58,237,0.1);
+    }
+    .stats-inner {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem; text-align: center;
+    }
+    .stat-value {
+      font-size: 2rem; font-weight: 900;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+
+    /* ── Skills ── */
+    .skills { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-tag { color: var(--purple); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+    .section-tag.cyan { color: var(--cyan); }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; margin-top: 0.5rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.8rem; transition: all 0.3s; cursor: default;
+    }
+    .skill-card:hover {
+      border-color: var(--purple); background: rgba(124,58,237,0.08);
+      transform: translateY(-4px);
+    }
+    .skill-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .skill-name { font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; }
+    .skill-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── Projects ── */
+    .projects { padding: 6rem 2rem; background: rgba(0,0,0,0.3); }
+    .filters { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .filter-btn {
+      padding: 0.45rem 1.2rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1);
+      background: transparent; color: var(--muted); cursor: pointer;
+      font-size: 0.85rem; font-weight: 600; transition: all 0.2s; font-family: inherit;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      border-color: var(--purple); background: rgba(124,58,237,0.2); color: #A78BFA;
+    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px; overflow: hidden; transition: all 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-6px); border-color: rgba(124,58,237,0.4);
+      box-shadow: 0 20px 60px rgba(124,58,237,0.15);
+    }
+    .project-bar { height: 8px; }
+    .project-body { padding: 1.8rem; }
+    .project-emoji { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .project-title { font-weight: 800; font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .project-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.2rem; }
+    .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .tag {
+      background: rgba(124,58,237,0.15); color: #A78BFA;
+      padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem;
+      font-weight: 600; border: 1px solid rgba(124,58,237,0.2);
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--cyan); text-decoration: none; font-size: 0.88rem;
+      font-weight: 700; transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.7rem; }
+
+    /* ── Contact ── */
+    .contact { padding: 6rem 2rem; }
+    .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+    .contact p { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; }
+    .contact-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-green {
+      background: linear-gradient(90deg, #22C55E, #16A34A); color: #fff;
+      padding: 0.9rem 2rem; border-radius: 999px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem; box-shadow: 0 0 30px rgba(34,197,94,0.3);
+      transition: transform 0.2s;
+    }
+    .btn-green:hover { transform: scale(1.05); }
+    .btn-linkedin {
+      background: linear-gradient(90deg, #0077B5, #005885); color: #fff;
+      padding: 0.9rem 2rem; border-radius: 999px; text-decoration: none;
+      font-weight: 700; font-size: 0.95rem; box-shadow: 0 0 30px rgba(0,119,181,0.3);
+      transition: transform 0.2s;
+    }
+    .btn-linkedin:hover { transform: scale(1.05); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(124,58,237,0.15);
+      padding: 2rem; text-align: center;
+    }
+    footer p { color: #334155; font-size: 0.85rem; }
+    footer span { color: var(--purple); font-weight: 600; }
+
+    /* ── Animations ── */
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 0.8s ease forwards; }
+    .fade-up-delay { animation: fadeUp 0.8s ease 0.2s forwards; opacity: 0; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .photo-wrap { width: 200px; height: 200px; }
+      .photo-wrap img { width: 200px; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="logo">VF.</a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#skills">Skills</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a href="https://wa.me/5561999787790" target="_blank" class="nav-cta">💬 Contato</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="sobre">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+    <div class="hero-inner">
+      <div class="photo-wrap fade-up">
+        <div class="photo-ring"></div>
+        <img src="https://media.base44.com/images/public/69e2902a7a927963a992ce38/143894afe_WhatsAppImage2025-01-28at165309.jpeg" alt="Vilker Ferreira"/>
+        <div class="photo-badge">🤖</div>
+      </div>
+      <div class="hero-text fade-up-delay">
+        <div class="badge-available">
+          <span class="badge-dot"></span>
+          <span>Disponível para projetos</span>
+        </div>
+        <h1>Olá, eu sou<br/><span class="gradient">Vilker Ferreira</span></h1>
+        <p class="typed-line"><span id="typed"></span><span class="cursor">|</span></p>
+        <p class="hero-desc">Transformo ideias em produtos reais usando tecnologia, marketing e inteligência artificial. Não espero o futuro chegar — eu o construo, linha por linha.</p>
+        <div class="hero-btns">
+          <a href="#projetos" class="btn-primary">🚀 Ver Projetos</a>
+          <a href="#contato" class="btn-outline">💬 Falar Comigo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div><div class="stat-value">4+</div><div class="stat-label">Projetos lançados</div></div>
+      <div><div class="stat-value">3</div><div class="stat-label">Áreas de atuação</div></div>
+      <div><div class="stat-value">100%</div><div class="stat-label">Foco em resultados</div></div>
+      <div><div class="stat-value">IA</div><div class="stat-label">No centro de tudo</div></div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag">Especialidades</div>
+        <h2>O que eu faço</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card"><div class="skill-icon">💻</div><div class="skill-name">Desenvolvimento Web</div><div class="skill-desc">Apps modernos com foco em performance e UX</div></div>
+        <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-name">Inteligência Artificial</div><div class="skill-desc">LLMs, automações e soluções com IA aplicada</div></div>
+        <div class="skill-card"><div class="skill-icon">📣</div><div class="skill-name">Marketing Digital</div><div class="skill-desc">Estratégia, tráfego pago e crescimento orgânico</div></div>
+        <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-name">Automações</div><div class="skill-desc">Fluxos inteligentes que trabalham enquanto você descansa</div></div>
+        <div class="skill-card"><div class="skill-icon">🎨</div><div class="skill-name">UI/UX Design</div><div class="skill-desc">Interfaces que encantam e convertem</div></div>
+        <div class="skill-card"><div class="skill-icon">🚀</div><div class="skill-name">SaaS & Produtos</div><div class="skill-desc">Da ideia ao produto real com velocidade</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projetos">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-tag cyan">Portfólio</div>
+        <h2>Projetos em Destaque</h2>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" onclick="filterProjects('Todos', this)">Todos</button>
+        <button class="filter-btn" onclick="filterProjects('IA', this)">IA</button>
+        <button class="filter-btn" onclick="filterProjects('Dev', this)">Dev</button>
+        <button class="filter-btn" onclick="filterProjects('Marketing', this)">Marketing</button>
+      </div>
+      <div class="projects-grid" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contato">
+    <div class="contact-inner">
+      <div class="section-header">
+        <div class="section-tag">Vamos trabalhar juntos</div>
+        <h2>Pronto para o próximo nível?</h2>
+      </div>
+      <p>Tem uma ideia? Um problema para resolver? Quer escalar com tecnologia e IA?<br/>Me manda uma mensagem — a gente transforma em realidade.</p>
+      <div class="contact-btns">
+        <a href="https://wa.me/5561999787790" target="_blank" class="btn-green">💬 WhatsApp</a>
+        <a href="https://www.linkedin.com/in/vilkerferrerazi/" target="_blank" class="btn-linkedin">💼 LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Feito com 💜 por <span>Vilker Ferreira</span> · 2026</p>
+  </footer>
+
+  <script>
+    // Typing effect
+    const text = "Dev · Marketing · IA · Automações";
+    let i = 0;
+    const el = document.getElementById("typed");
+    const type = () => { if (i < text.length) { el.textContent += text[i++]; setTimeout(type, 60); } };
+    setTimeout(type, 500);
+
+    // Projects data
+    const projects = [
+      { emoji: "🪐", title: "AstroPlan", desc: "Assistente pessoal com IA — tarefas, planejamento e automações num só lugar.", tags: ["IA", "Automação", "Produtividade"], link: "https://assistentastroplan.base44.app", bar: "linear-gradient(90deg,#7C3AED,#4F46E5)" },
+      { emoji: "🏥", title: "ClinicOne", desc: "Plataforma SaaS para gestão de clínicas. Agendamento, prontuários e controle financeiro.", tags: ["SaaS", "Saúde", "Dev"], link: "https://clinione.base44.app", bar: "linear-gradient(90deg,#06B6D4,#2563EB)" },
+      { emoji: "🌿", title: "EcoCity", desc: "Tecnologia aplicada à sustentabilidade urbana. Impacto real nas cidades.", tags: ["Dev", "Impacto Social", "Web"], link: "https://ecocity.base44.app", bar: "linear-gradient(90deg,#10B981,#0D9488)" },
+      { emoji: "⚽", title: "Em Jogo SP", desc: "Portal esportivo dedicado ao universo do esporte em São Paulo.", tags: ["Marketing", "Conteúdo", "Web"], link: "https://emjogosp.com", bar: "linear-gradient(90deg,#F97316,#DC2626)" }
+    ];
+
+    function renderProjects(filter) {
+      const grid = document.getElementById("projects-grid");
+      const filtered = filter === "Todos" ? projects : projects.filter(p => p.tags.some(t => t.includes(filter)));
+      grid.innerHTML = filtered.map(p => `
+        <div class="project-card">
+          <div class="project-bar" style="background:${p.bar}"></div>
+          <div class="project-body">
+            <div class="project-emoji">${p.emoji}</div>
+            <div class="project-title">${p.title}</div>
+            <div class="project-desc">${p.desc}</div>
+            <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
+            <a href="${p.link}" target="_blank" class="project-link">Ver projeto →</a>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function filterProjects(filter, btn) {
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderProjects(filter);
+    }
+
+    renderProjects("Todos");
+  </script>
+</body>
+</html>
