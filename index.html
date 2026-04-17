@@ -191,6 +191,35 @@
     }
     .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
 
+    /* ── Sobre Mim ── */
+    .sobre { padding: 5rem 2rem; }
+    .sobre-wrap {
+      max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .sobre-label {
+      display: inline-block;
+      background: rgba(0,255,135,0.08); border: 1px solid rgba(0,255,135,0.2);
+      border-radius: 999px; padding: 0.3rem 1.1rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--purple);
+      letter-spacing: 0.05em; margin-bottom: 1rem;
+    }
+    .sobre-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900;
+      margin-bottom: 1.4rem; line-height: 1.15;
+    }
+    .sobre-text {
+      font-size: 1.05rem; line-height: 1.9; color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .sobre-pills { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+    .sobre-pill {
+      background: rgba(0,255,135,0.06); border: 1px solid rgba(0,255,135,0.18);
+      border-radius: 999px; padding: 0.4rem 1rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--purple);
+      transition: all 0.2s;
+    }
+    .sobre-pill:hover { background: rgba(0,255,135,0.14); transform: translateY(-2px); }
+
     /* ── Skills ── */
     .skills { padding: 6rem 2rem; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
@@ -361,6 +390,29 @@
       <div><div class="stat-value">3</div><div class="stat-label">Áreas de atuação</div></div>
       <div><div class="stat-value">100%</div><div class="stat-label">Foco em resultados</div></div>
       <div><div class="stat-value">IA</div><div class="stat-label">No centro de tudo</div></div>
+    </div>
+  </section>
+
+  <!-- Sobre Mim -->
+  <section class="sobre" id="sobre-mim">
+    <div class="section-inner">
+      <div class="sobre-wrap">
+        <div class="sobre-label">👤 Quem sou eu</div>
+        <h2 class="sobre-title">Sobre <span class="gradient">Mim</span></h2>
+        <p class="sobre-text">
+          Desenvolvedor NoCode especializado em construir experiências digitais modernas e performáticas.
+          Transformo conceitos em soluções reais, desde páginas focadas em conversão até aplicativos PWA
+          com funcionamento offline e experiência semelhante a apps nativos.
+        </p>
+        <div class="sobre-pills">
+          <span class="sobre-pill">⚡ Base44</span>
+          <span class="sobre-pill">📱 PWA</span>
+          <span class="sobre-pill">🤖 IA</span>
+          <span class="sobre-pill">🚀 Landing Pages</span>
+          <span class="sobre-pill">🎨 UI/UX</span>
+          <span class="sobre-pill">📊 Marketing Digital</span>
+        </div>
+      </div>
     </div>
   </section>
 
