@@ -493,7 +493,7 @@
         <div class="project-card">
           <div class="project-bar" style="background:${p.bar}"></div>
           <div class="project-body">
-            <div class="project-emoji">${p.emoji}</div>
+            <div class="project-emoji">${p.logo ? '<img src="' + p.logo + '" alt="' + p.title + '" style="width:56px;height:56px;object-fit:contain;border-radius:10px;">' : p.emoji}</div>
             <div class="project-title">${p.title}</div>
             <div class="project-desc">${p.desc}</div>
             <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
