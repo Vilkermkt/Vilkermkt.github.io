@@ -340,6 +340,50 @@
       border-radius: 20px 20px 0 0;
     }
 
+  
+    /* ── Contact Form ── */
+    .contact-tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; color: var(--cyan); text-transform: uppercase; margin-bottom: 0.8rem; }
+    .contact-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 2rem; }
+    .contact-title span { color: var(--cyan); }
+    .contact-social-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-whatsapp {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #25D366; color: #fff; font-weight: 700;
+      padding: 0.75rem 1.8rem; border-radius: 999px; text-decoration: none;
+      font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    }
+    .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+    .btn-instagram {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      color: #fff; font-weight: 700;
+      padding: 0.75rem 1.8rem; border-radius: 999px; text-decoration: none;
+      font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(220,39,67,0.4);
+    }
+    .btn-instagram:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(220,39,67,0.5); }
+    .contact-form { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media(max-width:600px) { .form-row { grid-template-columns: 1fr; } }
+    .form-input, .form-textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 1rem 1.2rem; color: #fff; font-size: 0.95rem;
+      outline: none; transition: border-color 0.2s;
+      font-family: inherit; width: 100%; box-sizing: border-box;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--cyan); }
+    .form-textarea { min-height: 140px; resize: vertical; }
+    .btn-send {
+      background: linear-gradient(135deg,#00FF87,#4F46E5);
+      color: #fff; font-weight: 800; font-size: 1.05rem;
+      padding: 1rem; border-radius: 999px; border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,255,135,0.3);
+    }
+    .btn-send:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,255,135,0.4); }
+
   </style>
 </head>
 <body>
@@ -467,15 +511,21 @@
   <!-- Contact -->
   <section class="contact" id="contato">
     <div class="contact-inner">
-      <div class="section-header">
-        <div class="section-tag">Vamos trabalhar juntos</div>
-        <h2>Pronto para o próximo nível?</h2>
+      <div class="contact-tag">Bora Conversar?</div>
+      <h2 class="contact-title">Entre em <span>Contato</span></h2>
+      <div class="contact-social-btns">
+        <a href="https://wa.me/5561999787790" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
+        <a href="https://instagram.com/vilkerferrerazi" target="_blank" class="btn-instagram">📸 Instagram</a>
       </div>
-      <p>Tem uma ideia? Um problema para resolver? Quer escalar com tecnologia e IA?<br/>Me manda uma mensagem, a gente transforma em realidade.</p>
-      <div class="contact-btns">
-        <a href="https://wa.me/5561999787790" target="_blank" class="btn-green">💬 WhatsApp</a>
-        <a href="https://www.linkedin.com/in/vilkerferrerazi/" target="_blank" class="btn-linkedin">💼 LinkedIn</a>
-      </div>
+      <form class="contact-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-row">
+          <input type="text" class="form-input" placeholder="Seu nome" required />
+          <input type="email" class="form-input" placeholder="Seu e-mail" required />
+        </div>
+        <input type="text" class="form-input" placeholder="Assunto" required />
+        <textarea class="form-textarea" placeholder="Sua mensagem..." required></textarea>
+        <button type="submit" class="btn-send">Enviar Mensagem 🚀</button>
+      </form>
     </div>
   </section>
 
@@ -523,6 +573,19 @@
     }
 
     renderProjects("Todos");
+  
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-send');
+      btn.textContent = 'Mensagem enviada! ✅';
+      btn.style.background = '#25D366';
+      setTimeout(() => {
+        btn.textContent = 'Enviar Mensagem 🚀';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+
   </script>
 </body>
 </html>
